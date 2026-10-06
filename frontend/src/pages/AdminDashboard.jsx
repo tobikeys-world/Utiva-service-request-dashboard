@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import UserManagement from "../components/UserManagement";
 
 import api from "../services/api";
 import { useAuth } from "../context/AuthContext";
@@ -40,7 +41,7 @@ function AdminDashboard() {
             setRequests(requestsResponse.data.requests);
             setStats(statsResponse.data);
             setCategoryStats(categoryResponse.data);
-            const usersResponse = await api.get("/users/admins");
+            const usersResponse = await api.get("/users/employees");
 
             setEmployees(usersResponse.data.users);
 
@@ -453,6 +454,8 @@ function AdminDashboard() {
 
                 </div>
 
+                {/* USER MANAGEMENT */}
+                <UserManagement />
 
                 {/* REQUEST MANAGEMENT */}
                 <section>
